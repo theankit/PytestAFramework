@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="4.700" timestamp="2023-04-12T03:04:21.948792" hostname="ANKIT"><testcase classname="test_HomePage.TestHomePage" name="test_formBase[getData0]" time="4.154"><failure message="AssertionError: assert 'Successsss' in '×\nSuccess! The Form has been submitted successfully!.'">self = &lt;tests.test_HomePage.TestHomePage object at 0x00000244D1BEC490&gt;
+getData = {'firstName': 'Rahul', 'gender': 'Male', 'lastName': 'shetty'}
+
+    def test_formBase(self, getData):
+    
+        log = self.getlogger()
+    
+        homePage = HomePage(self.driver)
+    
+        homePage.getName().send_keys(getData["firstName"])
+        homePage.getEmail().send_keys(getData["lastName"])
+        log.info(getData["firstName"])
+        log.info(getData["lastName"])
+    
+        homePage.getCheckBox().click()
+    
+        # select class provide the methods to handle the options in dropdown
+        self.selectOptionFromText(homePage.getGender(), getData["gender"])
+    
+        homePage.getSubmitForm().click()
+    
+        message = homePage.getSuccessMessage().text
+        # log.info(message)
+        # print(message)
+    
+&gt;       assert "Successsss" in message
+E       AssertionError: assert 'Successsss' in '×\nSuccess! The Form has been submitted successfully!.'
+
+test_HomePage.py:34: AssertionError</failure></testcase></testsuite></testsuites>
