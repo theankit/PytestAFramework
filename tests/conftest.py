@@ -5,7 +5,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
-driver=None
+driver = None
 
 
 def pytest_addoption(parser):
@@ -35,6 +35,7 @@ def initialization(request):
     yield
     driver.close()
 
+
 @pytest.mark.hookwrapper
 def pytest_runtest_makereport(item):
     """
@@ -62,7 +63,8 @@ def pytest_runtest_makereport(item):
 
 
 def _capture_screenshot(name):
-        driver.get_screenshot_as_file(name)
+    driver.get_screenshot_as_file(name)
+
 
 def pytest_html_report_title(report):
     report.title = "My Test Report"

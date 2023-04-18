@@ -15,15 +15,15 @@ class TestHomePage(BaseClass):
 
         homePage = HomePage(self.driver)
 
-        homePage.getName().send_keys(getData["Name"])
-        homePage.getEmail().send_keys(getData["Email"])
-        log.info(getData["Name"])
-        log.info(getData["Email"])
+        homePage.getName().send_keys(getData["firstName"])
+        homePage.getEmail().send_keys(getData["lastName"])
+        log.info(getData["firstName"])
+        log.info(getData["lastName"])
 
         homePage.getCheckBox().click()
 
         # select class provide the methods to handle the options in dropdown
-        self.selectOptionFromText(homePage.getGender(), getData["Gender"])
+        self.selectOptionFromText(homePage.getGender(), getData["gender"])
 
         homePage.getSubmitForm().click()
 
@@ -37,6 +37,6 @@ class TestHomePage(BaseClass):
 
         self.driver.refresh()
 
-    @pytest.fixture(params=HomePageData.getTestData("TC2"))
+    @pytest.fixture(params=HomePageData.test_HomePage_data)
     def getData(self, request):
         return request.param
